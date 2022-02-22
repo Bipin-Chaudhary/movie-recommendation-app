@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/movies.css" />
+    <title>Movies</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <p class="logo-title">MOVIE RECOMMENDER</p>
+      </div>
+      <div class="menu">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a class="menu-item-link" href="/home">HOME</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-item-link" href="/register">REGISTER</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-item-link" href="/login">LOGIN</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-item-link" href="/movies">MOVIES</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-item-link" href="/recommend">RECOMMEND</a>
+          </li>
+          <li class="menu-item logout-button">
+            <a class="menu-item-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <div class="clearFix"></div>
+    </header>
+    <div class="genre-filter">
+      <form action="/movies" method="post">
+        <!-- <label for="genre-type">
+          All<input type="radio" name="sGenre" value="all" checked
+        /></label>
+        <label for="genre-type">
+          Sci-Fi<input type="radio" name="sGenre" value="sci-fi"
+        /></label>
+        <label for="genre-type">
+          Superhero<input type="radio" name="sGenre" value="superhero"
+        /></label>
+        <label for="genre-type">
+          Comedy<input type="radio" name="sGenre" value="comedy"
+        /></label>
+        <label for="genre-type">
+          Action<input type="radio" name="sGenre" value="action"
+        /></label> -->
+        <p class="genre-heading">Select Movie Genre</p>
+        <select name="sGenre" id="sGenre">
+          <option value="all" selected>All</option>
+
+          <option value="sci-fi">Sci-Fi</option>
+          <option value="superhero">Superhero</option>
+          <option value="comedy">Comedy</option>
+          <option value="action">Action</option>
+        </select>
+        <input type="submit" name="submit" class="genre-button" />
+      </form>
+    </div>
+
+    <%if(typeof alert !='undefined'){%>
+    <p class="alert-success"><%=alert%></p>
+    <%}%> <% if(typeof movies !='undefined'){%>
+
+    <div class="card">
+      <ul class="movies">
+        <% for(let movie of movies){%>
+        <li class="movie">
+          <img src="/images/<%=movie.sImage%>" alt="" />
+          <h3 class="title"><%=movie.sMovieName%></h3>
+          <p class="genre">Genre --<%=movie.sGenre%></p>
+          <p class="description"><%=movie.sDescription%></p>
+        </li>
+
+        <%}%>
+      </ul>
+    </div>
+    <%}%>
+  </body>
+</html>
